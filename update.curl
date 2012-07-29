@@ -1,0 +1,1 @@
+curl -d "hostname=yourhostname&key=yoursecretgeneratedkey&message=snap" http://localhost:8000/update/
