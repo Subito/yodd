@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from mydns.models import RessourceRecord, StartOfAuthority
+
 class MultiDBModelAdmin(admin.ModelAdmin):
     using = 'mydns'
     
@@ -17,3 +19,12 @@ class MultiDBModelAdmin(admin.ModelAdmin):
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         return super(MultiDBModelAdmin, self).formfield_for_manytomany(db_field, request=request, using=self.using, **kwargs)
+
+class RessourceRecordAdmin(MultiDBModelAdmin):
+    pass
+
+class StartOfAuthorityAdmin(MultiDBAdmin):
+    pass
+
+admin.site.register(RessourceRecord, RessourceRecordAdmin)
+admin.site.register(StartOfAuthority, StartOfAuthorityAdmin)
