@@ -21,9 +21,12 @@ class StartOfAuthority(models.Model):
     minimum = models.PositiveIntegerField()
     ttl = models.PositiveIntegerField()    
     active = models.CharField(max_length=1, choices=ACTIVE_CHOICES)
-    xfer = models.CharField(max_length=255)
+    xfer = models.CharField(max_length=255, null=True, blank=True)
 
     objects = UsingManager()
+
+    def __unicode__(self):
+        return self.origin
 
     class Meta:
         db_table = 'dns_soa'
@@ -52,6 +55,9 @@ class RessourceRecord(models.Model):
     active = models.CharField(max_length=1, choices=ACTIVE_CHOICES)
 
     objects = UsingManager()
+
+    def __unicode__(self):
+        return self.name
 
     class Meta:
         db_table = 'dns_rr'
