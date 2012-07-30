@@ -24,7 +24,7 @@ class MultiDBModelAdmin(admin.ModelAdmin):
 class RessourceRecordAdmin(MultiDBModelAdmin):
     pass
 
-class StartOfAuthorityAdmin(MultiDBAdmin):
+class StartOfAuthorityAdmin(MultiDBModelAdmin):
     pass
 
 admin.site.register(RessourceRecord, RessourceRecordAdmin)
