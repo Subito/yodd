@@ -18,7 +18,7 @@ def update(request):
                     from_ip=request.META['REMOTE_ADDR'],
                     message=request.POST['message'])
     update.save()
-    rr = RessourceRecord.objects.get_or_create(name=host.name) # zone gets set in mysql to "1" -- I'll change this later
+    rr, created = RessourceRecord.objects.get_or_create(name=host.name) # zone gets set in mysql to "1" -- I'll change this later
     rr.data = request.META['REMOTE_ADDR']
     rr.save()
     return HttpResponse('1')
