@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.conf import settings
 
 from mydns.models import RessourceRecord, StartOfAuthority
 
 class MultiDBModelAdmin(admin.ModelAdmin):
-    using = 'mydns'
+    using = settings.DNS_DATABASE
     
     def save_model(self, request, obj, form, change):
         obj.save(using=self.using)
