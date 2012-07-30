@@ -46,7 +46,7 @@ class RessourceRecord(models.Model):
         ('SRV', 'SRV'),
     )
 
-    zone = models.ForeignKey(StartOfAuthority)
+    zone = models.ForeignKey(StartOfAuthority, null=True, blank=True)
     name = models.CharField(max_length=200)
     data = models.CharField(max_length=200)
     aux = models.PositiveIntegerField(null=True)
