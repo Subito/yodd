@@ -28,6 +28,8 @@ DATABASES = {
     }
 }
 
+DNS_DATABASE = 'mydns'
+
 TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
