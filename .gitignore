@@ -2,3 +2,4 @@
 *.py~
 *.html~
 dev.db
+settings.py
