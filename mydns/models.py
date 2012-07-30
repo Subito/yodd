@@ -51,8 +51,8 @@ class RessourceRecord(models.Model):
     data = models.CharField(max_length=200)
     aux = models.PositiveIntegerField(null=True)
     ttl = models.PositiveIntegerField(default=300)
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    active = models.CharField(max_length=1, choices=ACTIVE_CHOICES)
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='A')
+    active = models.CharField(max_length=1, choices=ACTIVE_CHOICES, default='Y')
 
     objects = UsingManager()
 
