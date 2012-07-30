@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from updater.models import Host, Update
-from mydns.models import RessourceRecord
+from mydns.models import RessourceRecord, StartOfAuthority
 
 @csrf_exempt
 def update(request):
@@ -18,7 +18,9 @@ def update(request):
                     from_ip=request.META['REMOTE_ADDR'],
                     message=request.POST['message'])
     update.save()
-    rr, created = RessourceRecord.objects.get_or_create(name=host.name) # zone gets set in mysql to "1" -- I'll change this later
+    zone = StartOfAuthority.objects.get(pk=1)
+    # will provide better zone mechanism in the future
+    rr, created = RessourceRecord.objects.get_or_create(name=host.name, zone=zone)
     rr.data = request.META['REMOTE_ADDR']
     rr.save()
     return HttpResponse('1')
