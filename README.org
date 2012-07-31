@@ -1,0 +1,26 @@
+* Status
+This project is in early development stages, but it does work for me.
+Setup is a bit complicated though.
+* Requirements
+- [[http://mydns-ng.com][mydns]] v1.2.8.31
+- [[http://djangoproject.com][Django]] v1.4
+(others might work, but are currently untestet)
+Additionally, you need to own a domain or subdomain, which NS-entry
+points to the server, which will run yodd.
+* Installation
+- setup Django
+- clone yodd
+- do a syncdb
+- setup mydns
+- do mydns --create-tables and note the field-types of "data" and some others
+- compare the data-types of the rows with the tables, django created and alter them if
+  neccessary (yodd will continue to work)
+* First use
+- go to ~yourhost.com/admin/~ and login
+- add a StartOfAuthority (not self-explanatory, will automate this
+  step in the future with a simpler interface)
+- add a host and copy the key (which gets created for you)
+- copy the content of update.curl and fill in your hostname and key
+- change the URL at the end to ~yourhost.com/update/~
+- maybe create a cronjob, which does the curl periodically
+- test your new DNS-entry with ~dig~ or ~nslookup~
